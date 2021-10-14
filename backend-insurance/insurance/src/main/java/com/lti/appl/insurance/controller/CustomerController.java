@@ -12,58 +12,55 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.appl.insurance.beans.Customer;
-import com.lti.appl.insurance.beans.User;
 import com.lti.appl.insurance.exceptions.CustomExceptions;
-import com.lti.appl.insurance.services.UserServiceImpl;
-
+import com.lti.appl.insurance.services.CustomerServiceImpl;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("customer")
+public class CustomerController {
 	
 	@Autowired
-	UserServiceImpl userService;
-
-	// http://localhost:8082/user/add
+	CustomerServiceImpl customerService;
+	
+	// http://localhost:8082/customer/add
 	@PostMapping("/add")
-	public void insertNewEmployee(@RequestBody User user) {
-		System.out.println(user);
+	public void insertNewCustomer(@RequestBody Customer customer) {
 		try {
-			userService.register(user);
+			customerService.register(customer);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());;
+			System.out.println(e.getMessage());
 		}
 	}
-	
-	// http://localhost:8082/user/all
+
+	// http://localhost:8082/customer/all
 	@GetMapping("/all")
-	public List<User> allEmployeeList() {
-		return userService.getUserList();
+	public List<Customer> allCustomerList(){
+		return customerService.getCustomerList();
 	}
 	
-	// http://localhost:8082/user/{userId}
-	@GetMapping("/{userId}")
-	public User searchCustomerbyId(@PathVariable ("userId") int userId) {
+	// http://localhost:8082/customer/{customerId}
+	@GetMapping("/{customerId}")
+	public Customer searchEmployeeById(@PathVariable("customerId") int customerId) {
 		try {
-			return userService.searchUserbyId(userId);
+			return customerService.searchCustomerbyId(customerId);
 		} catch (CustomExceptions e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());;
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
 	
-	// http://localhost:8082/user/{userId}/edit
-	@PostMapping("/{userId}/edit")
-	public void updateEmployeeById(@PathVariable("userId") int userId, @RequestBody User user) {
+	@PostMapping("/{customerId}/edit")
+	public void updateEmployeeById(@PathVariable("customerId") int customerId, @RequestBody Customer customer) {
 		try {
-			userService.updateUser(userId, user);
+			customerService.updateCustomer(customerId, customer);
 		} catch (CustomExceptions e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
 	}
+	
 	
 }
