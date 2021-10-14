@@ -1,0 +1,105 @@
+create table users (
+  2  user_id number,
+  3  email_id varchar2(255),
+  4  password varchar2(255),
+  5  otp number,
+  6  role varchar2(255),
+  7  customer_id number,
+  8  constraint pk_users primary key(user_id),
+  9  constraint unique_email UNIQUE(email_id)
+ 10  );
+
+create table customers(
+  2  customer_id number,
+  3  customer_name varchar2(255),
+  4  email_id varchar2(255),
+  5  date_of_birth date,
+  6  contact number,
+  7  constraint pk_customers primary key(customer_id),
+  8  constraint unique_cust_email unique(email_id)
+  9  );
+
+alter table customers add address_id number;
+
+alter table users
+  2  add constraint fk_users_customers
+  3  foreign key(customer_id) references customers(customer_id) on delete set null;
+
+create table customer_address(
+  2  address_id number,
+  3  house_no varchar2(255),
+  4  city varchar2(255),
+  5  state varchar2(255),
+  6  pincode number,
+  7  constraint pk_address primary key(address_id)
+  8  );
+
+alter table customers
+  2  add constraint fk_customer_address foreign key(address_id) references customer_address(address_id) on delete set null;
+
+create table policy(
+  2  policy_id number,
+  3  issue_date date,
+  4  expiry_date date,
+  5  policy_amnt number,
+  6  vehicle_id number,
+  7  customer_id number,
+  8  insurance_id number,
+  9  constraint pk_policy primary key(policy_id),
+ 10  constraint fk_policy_customer foreign key(customer_id) references customers(customer_id)
+ 11  );
+
+create table insurance_plan(
+  2  plan_id number,
+  3  plan_name varchar2(255),
+  4  plan_type varchar2(255),
+  5  plan_subtype varchar2(255),
+  6  plan_provider varchar2(255),
+  7  plan_duration number,
+  8  constraint pk_insurance_plan primary key(plan_id)
+  9  );
+
+alter table policy add constraint
+  2  fk_policy_insurance foreign key(insurance_id) references insurance_plan(plan_id) on delete cascade;
+
+create table vehicle(
+  2  vehicle_id number,
+  3  vehicle_type varchar(255),
+  4  vehicle_model varchar(255),
+  5  manufacturer varchar(255),
+  6  purchase_date date,
+  7  driving_liscense varchar2(255),
+  8  rc_no varchar2(255),
+  9  engine_no varchar2(255),
+ 10  chassis_no varchar2(255),
+ 11  engine_type varchar2(255),
+ 12  renew_date date,
+ 13  constraint pk_vehicle primary key(vehicle_id),
+ 14  constraint uq_rc unique(rc_no),
+ 15  constraint uq_engine unique(engine_no),
+ 16  constraint uq_chassis unique(chassis_no)
+ 17  );
+
+alter table policy add constraint
+  2  fk_policy_vehicle foreign key(vehicle_id) references vehicle(vehicle_id) on delete set null;
+
+create table claim(
+  2  claim_id number,
+  3  claim_date date,
+  4  status varchar2(255),
+  5  claim_amount number,
+  6  reason varchar2(255),
+  7  policy_id number,
+  8  constraint pk_claim primary key(claim_id),
+  9  constraint fk_claim_policy foreign key(policy_id) references policy(policy_id) on delete cascade
+ 10  );
+
+create table payment(
+  2  payment_id number,
+  3  payment_mode varchar2(255),
+  4  payment_date date,
+  5  payment_amount number,
+  6  customer_id number,
+  7  constraint pk_payment primary key(payment_id),
+  8  constraint fk_payment_customer foreign key(customer_id) references customers(customer_id) on delete cascade
+  9  );
