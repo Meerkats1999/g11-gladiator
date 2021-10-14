@@ -1,5 +1,15 @@
 package com.lti.appl.insurance.dao;
 
-public class UserDao {
+import java.util.List;
 
+import com.lti.appl.insurance.beans.User;
+import com.lti.appl.insurance.exceptions.CustomExceptions;
+
+public interface UserDao {
+
+	void register(User user) throws Exception;
+	public List<User> getUserList();
+	public User searchUserbyId(int userId) throws CustomExceptions;
+	public void updateUser(int userId, User user) throws CustomExceptions;
+	
 }
