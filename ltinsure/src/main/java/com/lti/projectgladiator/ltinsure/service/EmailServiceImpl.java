@@ -9,14 +9,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailServiceImpl implements EmailService {
 
+	private JavaMailSender javaMailSender;
+
 	@Autowired
-	private JavaMailSender mailSender;
+	public EmailServiceImpl(JavaMailSender javaMailSender) {
+		this.javaMailSender = javaMailSender;
+	}
 	
 	public boolean sendEmail(SimpleMailMessage email) {
 		try{
-			mailSender.send(email);
+			javaMailSender.send(email);
 			return true;
 		}catch(MailException e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}
@@ -24,12 +29,12 @@ public class EmailServiceImpl implements EmailService {
 	public void sendSimpleMessage(String to, String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("ghoshrahul876@gmail.com");
+            message.setFrom("ltinsure.controller@gmail.com");
             message.setTo("rahulghosh8341@gmail.com");
             message.setSubject("Hi");
             message.setText("Testing mail");
 
-            mailSender.send(message);
+            javaMailSender.send(message);
             
         } catch (MailException exception) {
             exception.printStackTrace();

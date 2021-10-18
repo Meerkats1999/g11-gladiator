@@ -8,19 +8,29 @@ import { ResetPasswordService } from './reset-password.service';
   styleUrls: ['./reset-password.component.css'],
 })
 export class ResetPasswordComponent implements OnInit {
-  oldPassword: string | undefined;
   newPassword: string | undefined;
+  retypeNewPassword: string | undefined;
+
+  isNotSame = false;
 
   reset = new ResetDto();
 
-  constructor(private service: ResetPasswordService, private router: Router) {}
+  constructor(private service: ResetPasswordService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  checkIfSame() {
+    if (this.newPassword != this.retypeNewPassword) {
+      this.isNotSame = true;
+    } else {
+      this.isNotSame = false;
+    }
+  }
 
   resetPassword() {
-    this.reset.email = JSON.parse(sessionStorage.getItem('email')!);
-    this.reset.oldPassword = this.oldPassword;
-    this.reset.oldPassword = this.oldPassword;
+    this.reset.emailId = sessionStorage.getItem("email")?.toString();
+    console.log(this.reset.emailId);
+    this.reset.newPassword = this.newPassword;
 
     this.service.resetPassword(this.reset).subscribe((dataDto) => {
       let data: any;
@@ -35,7 +45,6 @@ export class ResetPasswordComponent implements OnInit {
 }
 
 export class ResetDto {
-  email: string | undefined;
-  oldPassword: string | undefined;
+  emailId: string | undefined;
   newPassword: string | undefined;
 }

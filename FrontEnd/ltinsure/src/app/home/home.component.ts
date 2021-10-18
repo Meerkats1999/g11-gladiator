@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   checkSessionBuy() {
     if (sessionStorage.getItem('id') == null) {
@@ -26,4 +26,13 @@ export class HomeComponent implements OnInit {
       alert('Please login first.');
     } else this.router.navigate(['renew']);
   }
+
+  checkSessionCalculate() {
+    if (sessionStorage.getItem('id') == null) {
+      alert('Please login first');
+    } else {
+      this.router.navigate(['estimate']);
+    }
+  }
+
 }
