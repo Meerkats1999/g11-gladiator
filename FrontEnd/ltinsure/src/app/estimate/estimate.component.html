@@ -9,34 +9,46 @@
 
 
 <html>
+
 <head>
-    <title> LTI Insurance </title>   
+    <title> LTI Insurance </title>
 </head>
-    <body>
-    <div class="login-box">
-    <img src="../assets/image/avatar.png" class="avatar">
-        <h1>Calculate Insurance</h1>
-        <form name="form" (ngSubmit) = "f.form.valid && calculateClaim()" #f="ngForm" novalidate>
-            
-     <!--<input class="form-control" type="text" name="age" placeholder="Age of Vehicle" [(ngModel)]=premium.age required maxlength="2">-->
-            <input class="form-control" #age="ngModel" type="text" id="age" [(ngModel)]=premium.age name="age" placeholder="Age of Vehicle" required maxlength="2">
+
+<body>
+    <div class="split">
+        <img class="registration-background" src="../assets/image/calculate-background.png" alt="">
+        <div class="login-box">
+            <!-- <img src="../assets/image/avatar.png" class="avatar"> -->
+            <h1>Calculate Insurance</h1>
+            <form name="form" (ngSubmit)="f.form.valid && calculateClaim()" #f="ngForm" novalidate>
+
+                <!--<input class="form-control" type="text" name="age" placeholder="Age of Vehicle" [(ngModel)]=premium.age required maxlength="2">-->
+                <input class="form-control" #age="ngModel" type="text" id="age" [(ngModel)]=premium.age name="age"
+                    placeholder="Age of Vehicle" required maxlength="2">
                 <div *ngIf="(f.submitted && age.invalid) || age.touched">
-                <div *ngIf="age.errors?.required"> This Field is required. </div></div>
-            
-            <input class="form-control" #loss="ngModel" type="text" name="loss" placeholder="Loss Suffered in Rs." [(ngModel)]=premium.lossSuffered required>
-            <div *ngIf="(f.submitted && loss.invalid) || loss.touched">
-                <div *ngIf="loss.errors?.required"> This Field is required. </div></div>
-            
-            <input class="form-control" #cost="ngModel" type="text" name="cost" placeholder="Total cost of Vehicle in Rs." [(ngModel)]=premium.totalCostOfVehicle required>
-            <div *ngIf="(f.submitted && cost.invalid) || cost.touched">
-                <div *ngIf="cost.errors?.required"> This Field is required. </div></div>
-            
-            <button type="submit">Calculate</button>
-             
+                    <div *ngIf="age.errors?.required" class="alert alert-danger"> This Field is required. </div>
+                </div>
+
+                <input class="form-control" #loss="ngModel" type="text" name="loss" placeholder="Loss Suffered in Rs."
+                    [(ngModel)]=premium.lossSuffered required>
+                <div *ngIf="(f.submitted && loss.invalid) || loss.touched">
+                    <div *ngIf="loss.errors?.required" class="alert alert-danger"> This Field is required. </div>
+                </div>
+
+                <input class="form-control" #cost="ngModel" type="text" name="cost"
+                    placeholder="Total cost of Vehicle in Rs." [(ngModel)]=premium.totalCostOfVehicle required>
+                <div *ngIf="(f.submitted && cost.invalid) || cost.touched">
+                    <div *ngIf="cost.errors?.required" class="alert alert-danger"> This Field is required. </div>
+                </div>
+
+                <button type="submit">Calculate</button>
+
             </form>
-        
-        
+
+
         </div>
-    
-    </body>
+    </div>
+
+</body>
+
 </html>

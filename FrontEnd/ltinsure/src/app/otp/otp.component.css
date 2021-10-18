@@ -33,6 +33,7 @@ body{
     margin-left: 50vh;
     margin-top: 5vh;
     border-radius: 30px;
+    overflow: auto;
     flex:1;
 }
 .avatar{
