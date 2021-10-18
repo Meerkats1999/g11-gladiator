@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>LTI Insurance</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- profile -->
+      <section class="profile">
+        <div class="records">
+          <p>Statistics</p>
+          <div>
+            <div class="marks">
+              <h1 class="orange">13</h1>
+              <p>
+                Insurance <br />
+                Policy
+              </p>
+            </div>
+            <div class="marks">
+              <h1 class="blue">3</h1>
+              <p>Policies<br />Renewed</p>
+            </div>
+            <div class="marks">
+              <h1 class="orange">10</h1>
+              <p>Claims<br />Made</p>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <img class="profilepic" src="imges/pic.jpg" alt="" />
+          <p>
+            Welcome! <br />
+            <span class="fw">User</span> <br />
+            <button>
+              <a
+                style="color: white"
+                routerLink="/buyInsurance"
+                routerLinkActive="active"
+                >Buy Insurance</a
+              >
+            </button>
+            <button>Generate pdf</button>
+            <button (click)="logout()">Log out</button>
+          </p>
+        </div>
+      </section>
+      <section class="details">
+        <div class="history">
+          <h3 class="grey fw">Policies:</h3>
+          <div class="list b-bottom" *ngFor="let p of policies">
+            <div class="list-detail" *ngIf="id == p.customer.id" >
+              <p>
+                Policy no: <span>{{ p.id }}</span>
+              </p>
+              <p>Vehicle model: <span class="orange">{{p.vehicle.model}}</span></p>
+              <p>Registration no: <span>{{p.vehicle.registrationNo}}</span></p>
+              <p>Claim amount: <span>{{p.policyAmount}}</span></p>
+
+              <div class="score grey">
+                <p>
+                  <button>
+                    <a
+                      style="color: white"
+                      routerLink="/claimInsurance/{{p.policyAmount}}"
+                      routerLinkActive="active"
+                      >Claim</a
+                    >
+                  </button>
+                  <span
+                    ><button>
+                      <a
+                        style="color: white"
+                        routerLink="/renew"
+                        routerLinkActive="active"
+                        >Renew</a
+                      >
+                    </button></span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
