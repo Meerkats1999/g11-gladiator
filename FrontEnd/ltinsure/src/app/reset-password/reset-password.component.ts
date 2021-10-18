@@ -28,7 +28,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword() {
-    this.reset.email = JSON.parse(sessionStorage.getItem("email") || '{}');
+    this.reset.emailId = sessionStorage.getItem("email")?.toString();
+    console.log(this.reset.emailId);
     this.reset.newPassword = this.newPassword;
 
     this.service.resetPassword(this.reset).subscribe((dataDto) => {
@@ -44,6 +45,6 @@ export class ResetPasswordComponent implements OnInit {
 }
 
 export class ResetDto {
-  email: string | undefined;
+  emailId: string | undefined;
   newPassword: string | undefined;
 }

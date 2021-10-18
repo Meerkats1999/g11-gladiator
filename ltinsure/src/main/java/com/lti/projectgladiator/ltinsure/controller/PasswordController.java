@@ -47,7 +47,7 @@ public class PasswordController {
 			userService.addOrUpdateUser(user);
 
 			SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
-			passwordResetEmail.setFrom("rahulghosh8341@gmail.com"); // email of sender
+			passwordResetEmail.setFrom("ltinsure.controller@gmail.com"); // email of sender
 			passwordResetEmail.setTo(user.getEmailId());
 			passwordResetEmail.setSubject("Reset your password");
 			passwordResetEmail.setText("Your otp to reset password is " + generatedOtp);
@@ -92,8 +92,10 @@ public class PasswordController {
 		}
 	}
 	
-	@PostMapping(path = "/updatePassword", consumes = "application/json", produces = "application/json")  // emailId, oldPassword, newPassword
+	@PostMapping(path = "/updatePassword", consumes = "application/json", produces = "application/json")  // emailId, newPassword
 	public StatusDto updatePassword(@RequestBody UpdateDto reset) {
+		System.out.println(reset.getNewPassword());
+		System.out.println(reset.getEmailId());
 		try {
 			User user = userService.getUserByEmail(reset.getEmailId());
 			
@@ -105,6 +107,8 @@ public class PasswordController {
 			user.setOtp(null);
 			
 			userService.addOrUpdateUser(user);
+			
+			System.out.println(user.getPassword());
 			
 			StatusDto status = new StatusDto();
 			status.setMessage("Updated successfully!");
