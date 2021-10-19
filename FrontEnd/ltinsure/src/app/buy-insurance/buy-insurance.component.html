@@ -3,8 +3,8 @@
     <title> LTI Insurance </title>   
 </head>
     <body>
-    <div class="login-box">
-    <img src="../assets/image/avatar.png" class="avatar">
+        <img class="registration-background" src="../assets/image/buy-insurance_background.png" alt="">
+    <div class="login-box" style='margin-top:50px;'>
         <h1>Buy Insurance</h1>
             <form name="form" (ngSubmit) = "f.form.valid && buyInsurance()" #f="ngForm" novalidate>
                 <input class="form-control" #vehicleType="ngModel" type="text" id="vehicleType" [(ngModel)]=vehicle.type name="vehicleType" placeholder="Vehicle Type">

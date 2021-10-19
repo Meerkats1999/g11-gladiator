@@ -14,7 +14,7 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="addr_id_seq")
-	@SequenceGenerator(name = "addr_id_seq", sequenceName = "addr_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "addr_id_seq",initialValue=80001, sequenceName = "addr_id_seq", allocationSize = 1)
 	@Column(name = "addr_id")
 	private int id;
 	

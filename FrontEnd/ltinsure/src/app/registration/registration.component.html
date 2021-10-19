@@ -10,7 +10,7 @@
         <div class="login-box">
             <!-- <img src="../assets/image/avatar.png" class="avatar"> -->
             <h1>Register</h1>
-            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+            <form name="form" (ngSubmit)="register()" #f="ngForm" novalidate>
                 <input class="form-control" #name="ngModel" type="text" id="name" [(ngModel)]=customer.name name="name"
                     placeholder="Your name.." required minlength="4" required>
                 <div *ngIf="(f.submitted && name.invalid) || (name.dirty || name.touched)">
@@ -53,11 +53,7 @@
                     <div *ngIf="city.errors?.required" class="alert alert-danger"> City is required. </div>
                 </div>
 
-                <input class="form-control" #landmark="ngModel" type="text" id="landmark" [(ngModel)]=customer.landmark
-                    name="landmark" placeholder="Enter your landmark" required minlength="5" required>
-                <div *ngIf="(f.submitted && landmark.invalid) || (landmark.dirty || landmark.touched)">
-                    <div *ngIf="landmark.errors?.required" class="alert alert-danger"> Landmark is required. </div>
-                </div>
+
 
                 <input class="form-control" #password="ngModel" type="password" id="password"
                     [(ngModel)]=customer.password name="password" placeholder="Enter password" required minlength="5"

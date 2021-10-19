@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<String> login(String email, String password) {
 		try {
-			System.out.println(password);
+
 			User user = userRepository.findByEmailPassword(email, UserService.getHashedString(password));
 			Customer customer = userRepository.findCustomerById(user.getCustomer().getId());
 

@@ -63,6 +63,13 @@ textarea{
     margin: auto;
     display: block;
     margin-bottom: 40px;
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #1c8adb;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
 }
 .login-box input[type="email"], input[type="password"], input[type="text"], input[type="date"], text area
 {
@@ -74,16 +81,7 @@ textarea{
     color: black;
     font-size: 16px;
 }
-.login-box input[type="submit"]
-{
-    border: none;
-    outline: none;
-    height: 40px;
-    background: #1c8adb;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 20px;
-}
+
 .login-box input[type="submit"]:hover
 {
     cursor: pointer;

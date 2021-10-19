@@ -1,8 +1,7 @@
-import { Policy } from './../renew/policy';
 import { UserDashboardService } from './user-dashboard.service';
-import { PolicyService } from './../policy.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,11 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
+  date: Date = new Date();
+  datepipe: DatePipe = new DatePipe('en-US');
+  formattedDate = this.datepipe.transform(this.date, 'MMMM d, y');
+  formattedDate2 = this.datepipe.transform(this.date, 'MMMM d');
   id = sessionStorage.getItem('id');
   name = sessionStorage.getItem('name');
   role = sessionStorage.getItem('role');
   policies: any;
-  constructor(private service: UserDashboardService, private router: Router) {}
+  constructor(
+    private service: UserDashboardService,
+    private router: Router,
+    private elementRef: ElementRef
+  ) {}
 
   ngOnInit(): void {
     this.service.getAllPolicies().subscribe((data: any) => {
@@ -22,11 +29,24 @@ export class UserDashboardComponent implements OnInit {
     });
     console.log(this.id);
   }
-
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
+      '#f3f6fd';
+  }
 
   logout() {
     sessionStorage.clear();
 
     this.router.navigate(['home']);
+  }
+  calculateDiff(data1: Date, data2: Date) {
+    console.log(data1, data2);
+    let expdate = new Date(data1);
+    let issueDate = new Date(data2);
+
+    let days = Math.floor(
+      (expdate.getTime() - issueDate.getTime()) / 1000 / 60 / 60 / 24
+    );
+    return days;
   }
 }

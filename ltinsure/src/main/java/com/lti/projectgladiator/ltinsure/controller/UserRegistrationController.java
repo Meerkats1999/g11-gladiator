@@ -60,8 +60,8 @@ public class UserRegistrationController {
             
 			try {
 	            SimpleMailMessage registeredMail = new SimpleMailMessage();
-	            registeredMail.setFrom("ghoshrahul876@gmail.com"); // email of sender
-	            registeredMail.setTo("rahulghosh8341@gmail.com");
+	            registeredMail.setFrom("ltinsure.controller@gmail.com"); // email of sender
+	            registeredMail.setTo(user.getEmailId());
 	            registeredMail.setSubject("Registered successfully");
 	            registeredMail.setText("Thanks for signing up on General Insurance portal");
 				
