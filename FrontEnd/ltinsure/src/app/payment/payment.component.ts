@@ -1,6 +1,6 @@
 import { PolicyService } from './../policy.service';
 import { PolicyDto } from './../buy-insurance/policyDto';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PlansService } from '../available-plans/available-plans.service';
 import { Plan } from '../entity/plan';
@@ -20,17 +20,17 @@ export class PaymentComponent implements OnInit {
   selectedPlan: Plan | undefined;
   plan_id: number | undefined;
   plan_amount: number = 0;
-  plan_dur : number = 0 ;
+  plan_dur: number = 0;
   vehicleid: number | undefined;
 
   constructor(
     private paymentService: PaymentService,
-    private policyService:PolicyService,
+    private policyService: PolicyService,
     private service: PlansService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private elementRef: ElementRef
   ) {
-
     this.service.getAllInsuranceData().subscribe((data: any) => {
       this.plan = data;
     });
@@ -40,13 +40,13 @@ export class PaymentComponent implements OnInit {
       this.plan_amount = Number(params.get('amount'));
       this.plan_dur = Number(params.get('dur'));
     });
-
   }
 
-  ngOnInit(): void { }
-
-  
-  
+  ngOnInit(): void {}
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
+      '#fff';
+  }
 
   pay() {
     // for (let key of Object.keys(this.plan)) {
@@ -57,7 +57,6 @@ export class PaymentComponent implements OnInit {
     // }
     console.log(this.plan_amount);
 
-   
     this.paymentDto.amount = this.plan_amount;
     this.paymentService.payNow(this.paymentDto).subscribe((data: any) => {
       alert(JSON.stringify(data));
@@ -72,11 +71,11 @@ export class PaymentComponent implements OnInit {
     this.policyDto.insurancePlanid = this.plan_id;
     this.policyDto.customerid = JSON.parse(sessionStorage.getItem('id')!);
     this.policyDto.vehicleId = this.vehicleid;
-    this.policyService.generatePolicy(this.policyDto).subscribe((data: any) => {
-    });
+    this.policyService
+      .generatePolicy(this.policyDto)
+      .subscribe((data: any) => {});
 
-
-    //create policy service 
+    //create policy service
     //in spring create a mapping to insert data  -->generate policy
     //add in user-dashboard  --mapping getall policy
 

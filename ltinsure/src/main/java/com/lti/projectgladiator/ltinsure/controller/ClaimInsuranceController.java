@@ -58,8 +58,6 @@ public class ClaimInsuranceController {
 	public Status updateClaimStatus(@RequestBody ApproveClaimDto approveClaimDto) {
 		try {
 
-			// Check if session id is of ADMIN role from User table -not added
-			// is role is not admin then throw InsuranceServiceException
 
 			Claim claim = service.getClaimDataById(approveClaimDto.getClaimId());
 

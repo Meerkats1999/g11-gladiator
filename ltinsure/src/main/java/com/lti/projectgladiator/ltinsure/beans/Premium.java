@@ -16,7 +16,7 @@ public class Premium {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="premium_id_seq")
-	@SequenceGenerator(name = "premium_id_seq", sequenceName = "premium_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "premium_id_seq",initialValue=90001, sequenceName = "premium_id_seq", allocationSize = 1)
 	@Column(name = "premium_id")
 	private int id;
 

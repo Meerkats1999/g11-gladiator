@@ -92,10 +92,8 @@ public class PasswordController {
 		}
 	}
 	
-	@PostMapping(path = "/updatePassword", consumes = "application/json", produces = "application/json")  // emailId, newPassword
+	@PostMapping(path = "/updatePassword", consumes = "application/json", produces = "application/json")  // emailId, oldPassword, newPassword
 	public StatusDto updatePassword(@RequestBody UpdateDto reset) {
-		System.out.println(reset.getNewPassword());
-		System.out.println(reset.getEmailId());
 		try {
 			User user = userService.getUserByEmail(reset.getEmailId());
 			
@@ -107,8 +105,6 @@ public class PasswordController {
 			user.setOtp(null);
 			
 			userService.addOrUpdateUser(user);
-			
-			System.out.println(user.getPassword());
 			
 			StatusDto status = new StatusDto();
 			status.setMessage("Updated successfully!");

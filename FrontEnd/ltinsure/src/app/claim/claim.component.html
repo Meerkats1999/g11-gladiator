@@ -3,8 +3,8 @@
     <title> LTI Insurance </title>   
 </head>
     <body>
+        <img class="registration-background" src="../assets/image/claim_background.png" alt="">
     <div class="login-box">
-    <img src="../assets/image/avatar.png" class="avatar">
         <h1> Claim Insurance </h1>
         <form name="form" (ngSubmit) = "f.form.valid && claimInsurance()" #f="ngForm" novalidate>
                 
@@ -13,7 +13,7 @@
                 <div *ngIf="(f.submitted && claimDate.invalid) || claimDate.touched">
                 <div *ngIf="claimDate.errors?.required"> This Field is required. </div></div>
 
-                <h1>Max Claim Ammount:{{maxAmt}}</h1>
+                <h1>Max Claim Amount:₹{{maxAmt}}</h1>
             <label for="amount">Claim Amount: </label>
             <input class="form-control" #claimAmount="ngModel" type="number" id="claimAmount" [(ngModel)]=claim.amount name="claimAmount" placeholder="" required>
                 <div *ngIf="(f.submitted && claimAmount.invalid) || claimAmount.touched">

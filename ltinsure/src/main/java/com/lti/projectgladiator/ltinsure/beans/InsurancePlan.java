@@ -14,7 +14,7 @@ public class InsurancePlan {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="insurance_id_seq")
-	@SequenceGenerator(name = "insurance_id_seq", sequenceName = "insurance_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "insurance_id_seq",initialValue=40001, sequenceName = "insurance_id_seq", allocationSize = 1)
 	@Column(name = "insurance_id")
 	private int id;
 	

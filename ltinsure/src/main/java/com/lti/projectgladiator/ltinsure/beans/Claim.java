@@ -21,7 +21,7 @@ public class Claim {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="claim_id_seq")
-	@SequenceGenerator(name = "claim_id_seq", sequenceName = "claim_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "claim_id_seq",initialValue=60001, sequenceName = "claim_id_seq", allocationSize = 1)
 	@Column(name = "claim_id")
 	private int id;
 

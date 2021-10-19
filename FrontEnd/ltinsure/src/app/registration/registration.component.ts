@@ -18,8 +18,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   register() {
     this.customerService.register(this.customer).subscribe((data) => {

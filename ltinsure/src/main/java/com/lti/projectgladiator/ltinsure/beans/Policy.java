@@ -22,7 +22,7 @@ public class Policy {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="policy_id_seq")
-	@SequenceGenerator(name = "policy_id_seq", sequenceName = "policy_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "policy_id_seq",initialValue=30001, sequenceName = "policy_id_seq", allocationSize = 1)
 	@Column(name = "policy_id")
 	private int id;
 
