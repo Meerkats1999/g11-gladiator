@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { DataDto } from './data.dto';
 import { LoginDto } from './login.dto';
 import { LoginService } from './login.service';
@@ -9,6 +10,7 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+  
 export class LoginComponent implements OnInit {
   loginDto: LoginDto = new LoginDto();
   dataDto: DataDto = new DataDto();
@@ -36,7 +38,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['userDashboard']);
         }
       } else {
-        //show error on login page fronted part
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Registered E-mail Id or Password didnot match!',
+        }); 
         this.router.navigate(['login']);
       }
     });

@@ -1,3 +1,4 @@
+import { Customer } from './../renew/cutomer';
 import { UserDashboardService } from './user-dashboard.service';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,17 +18,27 @@ export class UserDashboardComponent implements OnInit {
   name = sessionStorage.getItem('name');
   role = sessionStorage.getItem('role');
   policies: any;
+  noPolicies: boolean = false;
+  approvedClaim: any;
+  notApprovedClaim: any;
   constructor(
     private service: UserDashboardService,
     private router: Router,
     private elementRef: ElementRef
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.service.getAllPolicies().subscribe((data: any) => {
       this.policies = data;
     });
     console.log(this.id);
+  }
+
+  ngOnInit(): void {
+    this.service.fetchClaimData('Approved').subscribe((data) => {
+      this.approvedClaim = data;
+    });
+    this.service.fetchClaimData('Not Approved').subscribe((data) => {
+      this.notApprovedClaim = data;
+    });
   }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =

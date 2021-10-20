@@ -5,23 +5,23 @@ body{
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
-    display:inline-block;
+     display:inline-block;
 }
 
 .split{
     display:flex;
 }
 
-.registration-background{
-    margin-top: 25vh;
+.otp-background{
+    margin-top: 10vh;
     flex: 1;
     width: 1033px;
-    height: 712px;
+    height: 622px;
 }
 
 .login-box{
     width: 360px;
-    height: 390px;
+    height: 320px;
     background: rgba(168, 168, 168, 0.3);
     color: black;
     top: 50%;
@@ -33,17 +33,10 @@ body{
     margin-left: 50vh;
     margin-top: 5vh;
     border-radius: 30px;
-    overflow: auto;
+    overflow: auto;	
     flex:1;
 }
-.avatar{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
-}
+
 h1{
     margin: 0;
     padding: 0 0 20px;
@@ -71,6 +64,16 @@ h1{
     font-size: 16px;
 
 }
+.login-box input[type="submit"][disabled]	
+{	
+    background: lightblue;	
+}	
+.login-box input[type="submit"][disabled]:hover	
+{	
+    background: lightblue;	
+    color: #fff;	
+}	
+
 .login-box input[type="submit"]
 {
     border: none;

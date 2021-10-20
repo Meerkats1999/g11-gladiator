@@ -17,6 +17,9 @@ export class UserDashboardService {
       return true;
     }
   }
+  fetchClaimData(status: String) {
+    return this.http.get('http://localhost:8586/getByClaimStatus/' + status);
+  }
 
   getLoggedInId() {
     let user = sessionStorage.getItem('id');
@@ -36,7 +39,7 @@ export class UserDashboardService {
     }
   }
 
-  getAllPolicies(){
+  getAllPolicies() {
     return this.http.get('http://localhost:8586/getAllPolicy');
   }
 }

@@ -8,7 +8,7 @@ import com.lti.projectgladiator.ltinsure.beans.Policy;
 
 public interface ClaimDao {
 
-	void submitAndUpdatingOfClaimInsurance(Claim claim);
+	Claim submitAndUpdatingOfClaimInsurance(Claim claim);
 
 	Claim fetchDataByIdForClaimInsurance(int id);
 
@@ -17,6 +17,8 @@ public interface ClaimDao {
 	Customer findByCustomerId(int id);
 
 	Policy findByPolicyId(int id);
+
+	Claim getRecent();
 
 }
 

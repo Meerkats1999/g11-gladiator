@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -13,24 +14,41 @@ export class HomeComponent implements OnInit {
 
   checkSessionBuy() {
     if (sessionStorage.getItem('id') == null) {
-      alert('Please login first.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You need to login to access this feature!',
+      });  
     } else this.router.navigate(['buyInsurance']);
   }
   checkSessionCalculate() {
     if (sessionStorage.getItem('id') == null) {
-      alert('Please login first');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You need to login to access this feature!',
+      });  
     } else {
       this.router.navigate(['estimate']);
     }
   }
   checkSessionClaim() {
     if (sessionStorage.getItem('id') == null) {
-      alert('Please login first.');
-    } else this.router.navigate(['claimInsurance']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You need to login to access this feature!',
+      });  
+    } else window.location.href =
+      'https://www.thebalance.com/understanding-insurance-claims-2645921';
   }
   checkSessionRenew() {
     if (sessionStorage.getItem('id') == null) {
-      alert('Please login first.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You need to login to access this feature!',
+      });  
     } else this.router.navigate(['renew']);
   }
 }

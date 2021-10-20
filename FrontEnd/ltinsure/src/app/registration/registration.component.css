@@ -82,6 +82,17 @@ textarea{
     font-size: 16px;
 }
 
+.login-box input[type="submit"][disabled]
+{
+    background: lightblue;
+}
+
+.login-box input[type="submit"][disabled]:hover
+{
+    background: lightblue;
+    color: #fff;
+}
+
 .login-box input[type="submit"]:hover
 {
     cursor: pointer;

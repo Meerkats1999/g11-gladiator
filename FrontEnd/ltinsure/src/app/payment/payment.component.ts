@@ -6,6 +6,7 @@ import { PlansService } from '../available-plans/available-plans.service';
 import { Plan } from '../entity/plan';
 import { PaymentDto } from './payment.dto';
 import { PaymentService } from './payment.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-payment',
@@ -59,7 +60,13 @@ export class PaymentComponent implements OnInit {
 
     this.paymentDto.amount = this.plan_amount;
     this.paymentService.payNow(this.paymentDto).subscribe((data: any) => {
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
+
+      Swal.fire(
+        'Payment Successfull!',
+        'Policy is generated. You can view the details from dashboard.',
+        'success'
+      ); 
     });
     alert("Click 'OK' to confirm payment");
 
@@ -79,6 +86,6 @@ export class PaymentComponent implements OnInit {
     //in spring create a mapping to insert data  -->generate policy
     //add in user-dashboard  --mapping getall policy
 
-    this.router.navigate(['congratulations']);
+    this.router.navigate(['userDashboard']);
   }
 }

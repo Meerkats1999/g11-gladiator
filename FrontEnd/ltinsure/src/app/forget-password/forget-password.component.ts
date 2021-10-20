@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ForgotPasswordService } from './forget-password.service';
 
 @Component({
@@ -23,6 +24,11 @@ export class ForgetPasswordComponent implements OnInit {
         sessionStorage.setItem('forgotEmail', data.emailId);
         this.router.navigate(['otp']);
       } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'The entered Email-Id is not registered.',
+        });  
         window.location.reload();
       }
     });

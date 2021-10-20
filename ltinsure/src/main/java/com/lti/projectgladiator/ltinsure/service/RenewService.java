@@ -1,9 +1,10 @@
 package com.lti.projectgladiator.ltinsure.service;
 
 import com.lti.projectgladiator.ltinsure.beans.Policy;
+import com.lti.projectgladiator.ltinsure.status.Status;
 
 public interface RenewService {
 
-	String renewIns(Policy policy);
+	Status renewIns(Policy policy);
 
 }

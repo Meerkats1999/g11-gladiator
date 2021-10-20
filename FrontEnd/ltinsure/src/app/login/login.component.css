@@ -78,6 +78,18 @@ h1{
     font-size: 18px;
     border-radius: 20px;
 }
+
+.login-box input[type="submit"][disabled]
+{
+    background: lightblue;
+}
+
+.login-box input[type="submit"][disabled]:hover
+{
+    background: lightblue;
+    color: #fff;
+}
+
 .login-box input[type="submit"]:hover
 {
     cursor: pointer;

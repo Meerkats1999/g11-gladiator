@@ -8,6 +8,13 @@ body{
     font-family: sans-serif;
     display:inline-block;
 }
+.payment{
+ flex: 1;
+    margin-top: 15vh;
+    width: 800px;
+    height: 600px;
+    margin-left: 80px;
+    }
 .split{
     display:flex;
 }
@@ -20,8 +27,8 @@ body{
 
 }
 .login-box{
-    width: 25vw;
-    height: 70vh;
+     width: 25vw;
+    height: 86vh;
     background: rgba(168, 168, 168, 0.3);
     top: 35%;
     left: 50%;
