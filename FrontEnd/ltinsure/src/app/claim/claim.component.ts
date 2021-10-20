@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClaimInsuranceService } from '../claim-insurance.service';
 import { ApproveClaim } from '../entity/approveClaim';
 import { Claim } from '../entity/claim';
+import Swal from 'sweetalert2';
+import { Status } from '../entity/Status';
 
 @Component({
   selector: 'app-claim',
@@ -11,6 +13,7 @@ import { Claim } from '../entity/claim';
 })
 export class ClaimComponent implements OnInit {
   claim: Claim = new Claim();
+  status1: string|undefined;
   approveClaim: ApproveClaim = new ApproveClaim();
   maxAmt: number | undefined;
 
@@ -25,13 +28,16 @@ export class ClaimComponent implements OnInit {
   }
 
   claimInsurance() {
+    
     this.service
       .claimInsurance(this.claimCustomerId(this.claim))
       .subscribe((data) => {
-        alert(JSON.stringify(data));
+        const values = Object.values(data);
+        console.log(values[1]);
+        Swal.fire('Thank you...', values[1], 'success'); 
       });
 
-    this.router.navigate(['claimStatus']);
+    this.router.navigate(['userDashboard']);
   }
 
   updateStatus() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { PlansService } from '../available-plans/available-plans.service';
 import { PolicyDto } from '../buy-insurance/policyDto';
 import { Plan } from '../entity/plan';
@@ -43,9 +44,15 @@ export class RenewpaymentComponent implements OnInit {
 
     this.paymentDto1.amount = this.plan_amount;
     this.paymentService.payNow(this.paymentDto1).subscribe((data: any) => {
-      alert(JSON.stringify(data));
+      
+      Swal.fire(
+        'Payment Successfull!',
+        'Policy has been renewed. You can view the details from dashboard!',
+        'success'
+      ); 
     });
+    alert("Click 'OK' to confirm payment");
 
-    this.router.navigate(['congratulationsrenew']);
+    this.router.navigate(['userDashboard']);
   }
 }

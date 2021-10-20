@@ -13,10 +13,10 @@ body{
 }
 
 .registration-background{
+    margin-top: 10vh;
     flex: 1;
-    margin-top: 25vh;
     width: 1033px;
-    height: 712px;
+    height: 700px;
 }
 
 .login-box{
@@ -30,7 +30,7 @@ body{
     box-sizing: border-box;
     padding: 70px 30px;
     margin-left: 50vh;
-    margin-top: 20vh;
+    margin-top: 8vh;
     border-radius: 30px;
     overflow: auto;
     flex: 1;

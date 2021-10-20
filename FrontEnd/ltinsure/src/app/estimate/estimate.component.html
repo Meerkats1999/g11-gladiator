@@ -1,13 +1,3 @@
-<!--<h3>To calculate Estimate Claim Amount, please provide below information</h3>
-<form (ngSubmit)="calculateClaim()">
-    Enter Age of Vehicle:<input type="text" name="t1" [(ngModel)]=premium.age/>
-    Enter loss suffered:<input type="text" name="t3" [(ngModel)]=premium.lossSuffered/>
-    Enter Cost of Vehicle:<input type="text" name="t4" [(ngModel)]=premium.totalCostOfVehicle/>
-    <button type="submit">Calculate</button>
-</form> 
--->
-
-
 <html>
 
 <head>
@@ -18,14 +8,12 @@
     <div class="split">
         <img class="registration-background" src="../assets/image/calculate-background.png" alt="">
         <div class="login-box">
-            <!-- <img src="../assets/image/avatar.png" class="avatar"> -->
             <h1>Calculate Premium</h1>
-            <form name="form" (ngSubmit)="f.form.valid && calculateClaim()" #f="ngForm" novalidate>
+            <form name="form" (ngSubmit)="calculateClaim()" #f="ngForm" novalidate>
 
-                <!--<input class="form-control" type="text" name="age" placeholder="Age of Vehicle" [(ngModel)]=premium.age required maxlength="2">-->
                 <p>Age of Vehicle in Year</p>
                 <input class="form-control" #age="ngModel" type="text" id="age" [(ngModel)]=premium.age name="age"
-                    placeholder="Age of Vehicle" required maxlength="2">
+                    placeholder="Age of Vehicle" required maxlength="3">
                 <div *ngIf="(f.submitted && age.invalid) || age.touched">
                     <div *ngIf="age.errors?.required" class="alert alert-danger"> This Field is required. </div>
                 </div>
@@ -62,7 +50,7 @@
                     </div>
                 </div>
 
-                <button type="submit">Calculate</button>
+                <button type="submit" [disabled]="!f.valid">Calculate</button>
 
             </form>
 

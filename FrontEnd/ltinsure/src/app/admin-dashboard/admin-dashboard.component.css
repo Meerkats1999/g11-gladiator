@@ -24,7 +24,6 @@ body{
 
  h2,h4,h5{
     margin:1rem;
-    font-size: 16px;
 }
 
 h3 , p{
@@ -70,6 +69,7 @@ span{
     grid-template-columns: repeat(5,1fr);
     background-image:linear-gradient(to right, white 60% , var(--lightgrey) 60%) ;
     padding-top: .5rem;
+    height: 15vw;
 }
 
 .records{
@@ -260,7 +260,6 @@ button {
   background-color: #f44336;
   color: white;
 }
-
 
 
 

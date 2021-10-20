@@ -30,7 +30,7 @@ public class EmailServiceImpl implements EmailService {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("ltinsure.controller@gmail.com");
-            message.setTo("rahulghosh8341@gmail.com");
+            message.setTo("abhrajyoti1999@gmail.com");
             message.setSubject("Hi");
             message.setText("Testing mail");
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.projectgladiator.ltinsure.dto.ErrorResponse;
 import com.lti.projectgladiator.ltinsure.dto.LoginDto;
 import com.lti.projectgladiator.ltinsure.dto.LoginStatusDto;
 import com.lti.projectgladiator.ltinsure.dto.StatusDto;
