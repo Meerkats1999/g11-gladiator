@@ -59,15 +59,13 @@ public class UserRegistrationController {
             userService.register(user);
             
 			try {
-				System.out.println("enter in mail");
 	            SimpleMailMessage registeredMail = new SimpleMailMessage();
 	            registeredMail.setFrom("ltinsure.controller@gmail.com"); // email of sender
-	            registeredMail.setTo(user.getEmailId());
+	            registeredMail.setTo("rahulghosh8341@gmail.com");
 	            registeredMail.setSubject("Registered successfully");
-	            registeredMail.setText("Thanks for signing up on LTInsure");
+	            registeredMail.setText("Thanks for signing up on General Insurance portal");
 				
 	            emailService.sendEmail(registeredMail);
-	            System.out.println("mail Sent");
 	            
 			}catch(MailException e){
 				throw new UserServiceException("Error occured during sending email!");

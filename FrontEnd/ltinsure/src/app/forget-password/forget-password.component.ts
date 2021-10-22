@@ -22,6 +22,7 @@ export class ForgetPasswordComponent implements OnInit {
       sessionStorage.setItem('email', data.email);
       if (data.status == 'SUCCESS') {
         sessionStorage.setItem('forgotEmail', data.emailId);
+        Swal.fire('OTP Sent.', 'The OTP to reset the password is sent to the registered mail.', 'success'); 
         this.router.navigate(['otp']);
       } else {
         Swal.fire({

@@ -10,8 +10,6 @@ import com.lti.projectgladiator.ltinsure.beans.Policy;
 import com.lti.projectgladiator.ltinsure.dao.RenewDao;
 import com.lti.projectgladiator.ltinsure.exception.RenewServiceException;
 import com.lti.projectgladiator.ltinsure.service.RenewService;
-import com.lti.projectgladiator.ltinsure.status.Status;
-import com.lti.projectgladiator.ltinsure.status.Status.StatusType;
 
 @RestController
 @CrossOrigin
@@ -19,17 +17,16 @@ public class RenewController {
 	
 	@Autowired
 	private RenewService renewService;
-	Status stu = new Status();	
 	
 	@Autowired
 	private RenewDao renewRepo;
 	
 	@PostMapping(path = "/renew", consumes = "application/json", produces = "application/json")
-	public Status renew(@RequestBody Policy policy) {
+	public Policy renew(@RequestBody Policy policy) {
 		Policy newPolicy = new Policy();
 	  try {
 		  //System.out.println(policy.getId()+" "+policy.getDuration()+" "+policy.getExpiryDate()+" "+policy.getIssueDate()+" "+policy.getPlanAmount()+" "+policy.getPolicyAmount()+" "+policy.getStatus());
-		  stu = renewService.renewIns(policy);
+		  renewService.renewIns(policy);
 		  //System.out.println("Renewed");
 		  newPolicy =  renewRepo.findByPolicyId(policy.getId());
 		  
@@ -50,7 +47,7 @@ public class RenewController {
 		//}
 			//return newPolicy;
 	}
-	return stu;
+	return newPolicy;
 	
 	
 }

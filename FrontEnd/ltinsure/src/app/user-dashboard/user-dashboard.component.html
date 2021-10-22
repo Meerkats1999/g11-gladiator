@@ -68,7 +68,6 @@
       <div class="projects-section-header">
         <p>Policies</p>
       </div>
-      <!-- <div *ngIf="noPolicies"><h4>No Policies Available!</h4></div> -->
       <div class="project-boxes jsGridView" *ngFor="let p of policies">
         <div class="project-box-wrapper" *ngIf="id == p.customer.id">
           <div>
@@ -194,9 +193,6 @@
               Name : {{name}}
             </p>
             <p class="message-line time">Updated on {{ formattedDate2 }}</p>
-             <!-- <p>
-              <button>Generate pdf</button>
-            </p> -->
           </div>
         </div>
       </div>

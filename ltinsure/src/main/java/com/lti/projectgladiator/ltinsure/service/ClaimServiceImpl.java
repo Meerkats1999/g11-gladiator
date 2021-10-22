@@ -17,8 +17,8 @@ public class ClaimServiceImpl implements ClaimService {
 	private ClaimDao claimInsuranceRepo;
 
 	@Override
-	public Claim saveAndUpdateOfClaimInsuranceDetails(Claim claim) throws InsuranceServiceException {
-		return claimInsuranceRepo.submitAndUpdatingOfClaimInsurance(claim);
+	public void saveAndUpdateOfClaimInsuranceDetails(Claim claim) throws InsuranceServiceException {
+		claimInsuranceRepo.submitAndUpdatingOfClaimInsurance(claim);
 	}
 
 	@Override
@@ -42,6 +42,4 @@ public class ClaimServiceImpl implements ClaimService {
 	public Policy findByPolicyId(int id) {
 		return claimInsuranceRepo.findByPolicyId(id);
 	}
-
-	
 }

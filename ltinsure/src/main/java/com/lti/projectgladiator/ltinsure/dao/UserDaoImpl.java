@@ -3,7 +3,6 @@ package com.lti.projectgladiator.ltinsure.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -70,7 +69,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User findUserByEmail(String email)  {
+	public User findUserByEmail(String email) {
 		return (User) entityManager.createNamedQuery("fetch-user-using-email")
 				.setParameter("email", email)
 				.getSingleResult();

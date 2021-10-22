@@ -20,8 +20,8 @@ public class ClaimDaoImpl implements ClaimDao{
 
 	@Override
 	@Transactional
-	public Claim submitAndUpdatingOfClaimInsurance(Claim claim) {
-		return entityManager.merge(claim);
+	public void submitAndUpdatingOfClaimInsurance(Claim claim) {
+		entityManager.merge(claim);
 	}
 
 	@Override
@@ -29,7 +29,6 @@ public class ClaimDaoImpl implements ClaimDao{
 		Claim claim = entityManager.find(Claim.class, id);
 		return claim;
 	}
-	
 
 	@Override
 	public List<Claim> fetchAllClaimData() {
@@ -46,11 +45,5 @@ public class ClaimDaoImpl implements ClaimDao{
 	@Override
 	public Policy findByPolicyId(int id) {
 		return entityManager.find(Policy.class, id);
-	}
-
-	@Override
-	public Claim getRecent() {
-		
-		return null;
 	}
 }

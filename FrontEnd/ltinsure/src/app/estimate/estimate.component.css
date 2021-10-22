@@ -74,6 +74,7 @@ select{
     width: 50%;
     margin: auto;
     display: block;
+
     margin-bottom: 40px;
 }
 .login-box input[type="email"], input[type="password"], input[type="text"], input[type="date"], select
@@ -96,18 +97,6 @@ select{
     font-size: 18px;
     border-radius: 20px;
 }
-
-.login-box button[disabled]
-{
-    background: lightblue;
-}
-
-.login-box button[disabled]:hover
-{
-    background: lightblue;
-    color: #fff;
-}
-
 .login-box button:hover
 {
     cursor: pointer;

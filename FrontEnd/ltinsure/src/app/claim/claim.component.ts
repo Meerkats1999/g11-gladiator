@@ -40,6 +40,7 @@ export class ClaimComponent implements OnInit {
     this.router.navigate(['userDashboard']);
   }
 
+
   updateStatus() {
     this.service
       .updateStatus(this.approveClaimCustomerId(this.approveClaim))

@@ -9,7 +9,7 @@ import com.lti.projectgladiator.ltinsure.exception.InsuranceServiceException;
 
 public interface ClaimService {
 
-	Claim saveAndUpdateOfClaimInsuranceDetails(Claim claim) throws InsuranceServiceException;
+	void saveAndUpdateOfClaimInsuranceDetails(Claim claim) throws InsuranceServiceException;
 
 	List<Claim> getClaimInsuranceData() throws InsuranceServiceException;
 
@@ -18,6 +18,5 @@ public interface ClaimService {
 	Customer findByCustomerId(int id);
 
 	Policy findByPolicyId(int id);
-
 
 }

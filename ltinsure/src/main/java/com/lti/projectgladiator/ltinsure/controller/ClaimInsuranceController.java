@@ -44,7 +44,7 @@ public class ClaimInsuranceController {
 
 			Status status = new Status();
 			status.setStatus(StatusType.SUCCESS);
-			status.setMessage("Your claim details are sent for approval.");
+			status.setMessage("Claim Details Are Submitted Successfully.");
 			return status;
 		} catch (InsuranceServiceException e) {
 			Status status = new Status();
@@ -63,7 +63,7 @@ public class ClaimInsuranceController {
 
 			claim.setStatus(approveClaimDto.getStatus());
 
-			Claim update = service.saveAndUpdateOfClaimInsuranceDetails(claim);
+			service.saveAndUpdateOfClaimInsuranceDetails(claim);
 
 			Status status = new Status();
 			status.setStatus(StatusType.SUCCESS);
@@ -99,6 +99,4 @@ public class ClaimInsuranceController {
 			return status;
 		}
 	}
-	
-	
 }

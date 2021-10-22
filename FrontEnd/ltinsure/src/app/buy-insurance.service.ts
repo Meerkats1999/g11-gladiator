@@ -9,7 +9,6 @@ export class BuyInsuranceService {
   constructor(private http: HttpClient) {}
 
   buyInsurance(vehicle: Vehicle) {
-    console.log(this.http.post('http://localhost:8586/buyInsurance', vehicle));
     return this.http.post('http://localhost:8586/buyInsurance', vehicle);
   }
 }

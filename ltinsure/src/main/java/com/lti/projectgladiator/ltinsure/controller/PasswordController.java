@@ -1,7 +1,5 @@
 package com.lti.projectgladiator.ltinsure.controller;
 
-import javax.persistence.NoResultException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,22 +29,17 @@ public class PasswordController {
 
 	@PostMapping(path = "/forgotPassword", consumes = "application/json", produces = "application/json")
 	public ForgotPasswordStatus forgotPassword(@RequestBody ForgotDto forgotDto) {
-		ForgotPasswordStatus status = new ForgotPasswordStatus();
 		System.out.println(forgotDto.getEmail());
 		User user = userService.getUserByEmail(forgotDto.getEmail());
 		
 		try {
 			if (!userService.isUserPresent(forgotDto.getEmail())) {
-				status.setEmail(user.getEmailId());
-				status.setMessage("User does not exists!");
-				status.setStatus(StatusType.FAILURE);
+				throw new UserServiceException("User does not exists!");
 			}
 
 			String generatedOtp = UserService.generateOtp();
 			if (generatedOtp == null) {
-				status.setEmail(user.getEmailId());
-				status.setMessage("OTP could not generated, try again!");
-				status.setStatus(StatusType.FAILURE);
+				throw new UserServiceException("OTP could not generated, try again!");
 			}
 
 			user.setOtp(generatedOtp);
@@ -61,16 +54,17 @@ public class PasswordController {
 
 			emailService.sendEmail(passwordResetEmail);
 
-			
+			ForgotPasswordStatus status = new ForgotPasswordStatus();
 			status.setEmail(user.getEmailId());
 			status.setMessage("Otp for password reset is send to " + user.getEmailId());
 			status.setStatus(StatusType.SUCCESS);
 
 			return status;
 
-		} catch (UserServiceException | NoResultException ex) {
+		} catch (UserServiceException e) {
+			ForgotPasswordStatus status = new ForgotPasswordStatus();
 			status.setEmail(user.getEmailId());
-			status.setMessage(ex.getMessage());
+			status.setMessage(e.getMessage());
 			status.setStatus(StatusType.FAILURE);
 
 			return status;
